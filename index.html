@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>FlashFunds — Smart Expense Tracker</title>
+  <!-- Tailwind CSS + Font Awesome + Chart.js -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50  transition-colors duration-300">
+
+  <!-- Navigation Bar -->
+  <nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-bolt text-indigo-500 text-2xl"></i>
+          <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">FlashFunds</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-6" id="navLinks">
+          <a href="#featuresSection" class="nav-link text-gray-700">Features</a>
+          <a href="#howItWorks" class="nav-link text-gray-700">How It Works</a>
+        </div>
+        <div class="flex items-center space-x-3">
+          <button id="mobileMenuBtn" class="md:hidden text-gray-600 text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <div id="mobileMenu" class="hidden md:hidden bg-white rounded-b-2xl shadow-lg pb-4 transition-all"></div>
+    </div>
+  </nav>
+
+  <main id="app" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Landing Hero -->
+    <div id="landingHero" class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-indigo-100 px-4 py-2 rounded-full mb-6">
+        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+        <span class="text-sm text-indigo-700 font-medium">100% Free & Open Source</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">Take control of your <span class="text-indigo-500">finances</span></h1>
+      <p class="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">Track expenses, set monthly budgets, and visualize spending habits — all with privacy-first local storage. No accounts, no cloud, just you.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+        <button onclick="window.location.hash='signup'" class="gradient-btn px-8 py-4 text-lg font-semibold text-white rounded-xl shadow-lg hover:shadow-xl">Get Started Free</button>
+        <button onclick="document.getElementById('featuresSection').scrollIntoView({behavior:'smooth'})" class="px-8 py-4 text-lg font-semibold text-gray-700 border border-gray-300 rounded-xl hover:bg-gray-100 transition">Learn More</button>
+      </div>
+      <p class="text-sm text-gray-500 mt-4"><i class="fas fa-shield-alt mr-1"></i> Your data stays on your device</p>
+    </div>
+
+    <!-- Features Section -->
+    <div id="featuresSection" class="mb-16">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-800">Everything you need to manage money</h2>
+        <p class="text-gray-600 mt-2">Powerful features, simple interface</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass-card text-center">
+          <div class="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-chart-pie text-2xl text-indigo-500"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Visual Analytics</h3>
+          <p class="text-gray-600">Beautiful charts show your spending by category and 7-day trends at a glance.</p>
+        </div>
+        <div class="glass-card text-center">
+          <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-wallet text-2xl text-green-500"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Budget Tracking</h3>
+          <p class="text-gray-600">Set monthly budgets and track progress with visual progress bars.</p>
+        </div>
+        <div class="glass-card text-center">
+          <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-filter text-2xl text-purple-500"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Smart Filtering</h3>
+          <p class="text-gray-600">Search and filter expenses by category to find exactly what you need.</p>
+        </div>
+        <div class="glass-card text-center">
+          <div class="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-download text-2xl text-orange-500"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Export Data</h3>
+          <p class="text-gray-600">Export all your data to JSON anytime. Your data, your way.</p>
+        </div>
+        
+        <div class="glass-card text-center">
+          <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-lock text-2xl text-red-500"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Private by Design</h3>
+          <p class="text-gray-600">All data stored locally. No accounts required, no tracking.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- How It Works -->
+    <div id="howItWorks" class="mb-16">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-800">How it works</h2>
+        <p class="text-gray-600 mt-2">Start tracking in seconds</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-indigo-500 text-white rounded-full flex items-center justify-center mx-auto text-xl font-bold">1</div>
+          <h3 class="text-lg font-semibold text-gray-800 mt-4">Create Account</h3>
+          <p class="text-gray-600 mt-2">Sign up with just your email and a password. No verification needed.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-indigo-500 text-white rounded-full flex items-center justify-center mx-auto text-xl font-bold">2</div>
+          <h3 class="text-lg font-semibold text-gray-800 mt-4">Add Expenses</h3>
+          <p class="text-gray-600 mt-2">Log your spending with amount, category, and date. It's that simple.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-indigo-500 text-white rounded-full flex items-center justify-center mx-auto text-xl font-bold">3</div>
+          <h3 class="text-lg font-semibold text-gray-800 mt-4">Watch Your Money</h3>
+          <p class="text-gray-600 mt-2">See where your money goes with charts and set budgets to stay on track.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div id="ctaSection" class="glass-card text-center py-12">
+      <i class="fas fa-rocket text-4xl text-indigo-500 mb-4"></i>
+      <h2 class="text-2xl font-bold text-gray-800">Ready to take control?</h2>
+      <p class="text-gray-600 mt-2 mb-6">Join thousands who've already taken control of their finances.</p>
+      <button onclick="window.location.hash='signup'" class="gradient-btn px-8 py-3 text-lg font-semibold text-white rounded-xl">Get Started Now</button>
+    </div>
+
+    <!-- Auth Section -->
+    <div id="authSection" class="flex flex-col lg:flex-row gap-8 justify-center items-stretch mb-12">
+      <!-- Login Card -->
+      <div class="glass-card w-full max-w-md mx-auto">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-2"><i class="fas fa-sign-in-alt text-indigo-500"></i> Login</h2>
+          <form id="loginForm" class="mt-6 space-y-4">
+            <input type="text" id="loginUsername" placeholder="Username" required class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white">
+            <input type="password" id="loginPassword" placeholder="Password" required class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white">
+            <button type="submit" class="gradient-btn w-full py-3 font-semibold text-white rounded-xl shadow-lg"><i class="fas fa-arrow-right-to-bracket mr-2"></i>Login</button>
+          </form>
+          <p class="text-sm text-center text-gray-500 mt-4">Don't have an account? <button id="showSignupBtn" class="text-indigo-500 font-medium hover:underline">Sign up</button></p>
+        </div>
+      </div>
+      <!-- Signup Card -->
+      <div id="signupCard" class="glass-card w-full max-w-md mx-auto hidden">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-800"><i class="fas fa-user-plus text-purple-500"></i> Sign Up</h2>
+          <form id="signupForm" class="mt-6 space-y-4">
+            <input type="text" id="signupFullName" placeholder="Full name" required class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white">
+            <input type="text" id="signupUsername" placeholder="Username" required class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white">
+            <input type="email" id="signupEmail" placeholder="Email address" required class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white">
+            <input type="password" id="signupPassword" placeholder="Create password" required class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white">
+            <button type="submit" class="gradient-btn w-full py-3 font-semibold text-white rounded-xl shadow-lg"><i class="fas fa-user-check mr-2"></i>Create Account</button>
+          </form>
+          <p class="text-sm text-center text-gray-500 mt-4">Already have an account? <button id="showLoginBtn" class="text-indigo-500 font-medium hover:underline">Login</button></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard (protected) -->
+    <div id="dashboardSection" class="hidden space-y-8">
+      <!-- Stats cards, budget, expense form, charts, etc. -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="stats-card"><i class="fas fa-dollar-sign text-green-500 text-2xl"></i><div><p class="text-gray-500 text-sm">Total spent (month)</p><h3 id="totalSpentMonth" class="text-2xl font-bold">$0</h3></div></div>
+        <div class="stats-card"><i class="fas fa-chart-line text-blue-500 text-2xl"></i><div><p class="text-gray-500 text-sm">Remaining budget</p><h3 id="remainingBudget" class="text-2xl font-bold">$0</h3></div></div>
+        <div class="stats-card"><i class="fas fa-wallet text-purple-500 text-2xl"></i><div><p class="text-gray-500 text-sm">Avg daily spend</p><h3 id="avgDailySpend" class="text-2xl font-bold">$0</h3></div></div>
+        <div class="stats-card"><i class="fas fa-tag text-orange-500 text-2xl"></i><div><p class="text-gray-500 text-sm">Top category</p><h3 id="topCategory" class="text-xl font-bold truncate">—</h3></div></div>
+      </div>
+
+      <div class="glass-card p-5">
+        <div class="flex flex-wrap justify-between items-center gap-3">
+          <div><i class="fas fa-calendar-alt text-indigo-500"></i> <span class="font-semibold text-white">Monthly Budget</span></div>
+          <div class="flex gap-3"><input type="number" id="budgetInput" placeholder="Set budget ($)" class="w-36 px-3 py-2 rounded-lg border bg-white"><button id="setBudgetBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">Set</button></div>
+        </div>
+        <div class="mt-3"><div class="w-full bg-gray-200 rounded-full h-3"><div id="budgetProgressBar" class="bg-gradient-to-r from-indigo-500 to-purple-500 h-3 rounded-full w-0 transition-all duration-500"></div></div></div>
+        <p id="budgetStatus" class="text-sm text-gray-500 mt-2"></p>
+      </div>
+
+      <div class="glass-card p-5">
+        <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-plus-circle text-indigo-500"></i> <span id="formTitle">Add Expense</span></h3>
+        <form id="expenseForm" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <input type="text" id="expenseDesc" placeholder="Description" required class="px-3 py-2 rounded-lg border bg-white">
+          <input type="number" id="expenseAmount" placeholder="Amount ($)" step="0.01" required class="px-3 py-2 rounded-lg border bg-white">
+          <select id="expenseCategory" class="px-3 py-2 rounded-lg border bg-white">
+            <option value="Food">🍔 Food</option><option value="Transport">🚗 Transport</option><option value="Shopping">🛍️ Shopping</option><option value="Bills">💡 Bills</option><option value="Entertainment">🎬 Entertainment</option><option value="Health">❤️ Health</option><option value="Other">📌 Other</option>
+          </select>
+          <input type="date" id="expenseDate" class="px-3 py-2 rounded-lg border bg-white">
+          <div class="md:col-span-4 flex gap-3">
+            <button type="submit" class="gradient-btn px-6 py-2 rounded-lg text-white"><i class="fas fa-check"></i> <span id="submitBtnText">Add Expense</span></button>
+            <button type="button" id="cancelEditBtn" class="bg-gray-500 hover:bg-gray-600 text-white px-4 rounded-lg hidden">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card p-4"><h4 class="font-bold text-white mb-2">📊 Spending by Category</h4><canvas id="doughnutChart" width="400" height="300" style="max-height: 280px;"></canvas></div>
+        <div class="glass-card p-4"><h4 class="font-bold text-white mb-2">📈 7-Day Trend</h4><canvas id="lineChart" width="400" height="300" style="max-height: 280px;"></canvas></div>
+      </div>
+
+      <div class="flex flex-wrap gap-3 justify-between items-center">
+        <div class="flex flex-wrap gap-3">
+          <input type="text" id="searchInput" placeholder="🔍 Search expenses..." class="px-4 py-2 rounded-xl border bg-white w-64">
+          <select id="categoryFilter" class="px-4 py-2 rounded-xl border bg-white"><option value="ALL">All Categories</option></select>
+        </div>
+        <button id="exportDataBtn" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-xl"><i class="fas fa-download"></i> Export JSON</button>
+      </div>
+
+      <div class="glass-card overflow-x-auto">
+        <table class="min-w-full text-left"><thead class="border-b border-gray-700"><tr><th>Description</th><th>Amount</th><th>Category</th><th>Date</th><th>Actions</th></tr></thead><tbody id="expensesTableBody"><tr><td colspan="5" class="text-center py-6 text-gray-400">No expenses found</td></tr></tbody></table>
+      </div>
+    </div>
+  </main>
+  <footer class="text-center text-gray-400 text-sm py-6 border-t border-gray-800 mt-12">
+    <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+      <span>FlashFunds — Smart Expense Tracker</span>
+      <span class="hidden md:inline">•</span>
+      <span><i class="fas fa-lock mr-1"></i> 100% Local Storage</span>
+      <span class="hidden md:inline">•</span>
+      <span>Open Source</span>
+    </div>
+  </footer>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
