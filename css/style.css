@@ -1,35 +1,50 @@
-    /* Glassmorphism & custom styles */
-    .glass-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    border-radius: 1rem;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s;
-    padding: 1.25rem;
-    }
+/* ===== Background & Overlay ===== */
+body {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* fallback */
+}
+.dark .bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
 
-    .stats-card {
-    composes: glass-card;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    }
-
-    .gradient-btn {
-    background: linear-gradient(135deg, #4f46e5, #9333ea);
-    transition: all 0.2s;
-    }
-    .gradient-btn:hover {
-    background: linear-gradient(135deg, #4338ca, #7e22ce);
-    }
-
-    /* Animation */
-    @keyframes fadeSlideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-    }
-    .glass-card, .stats-card {
-    animation: fadeSlideUp 0.3s ease-out;
-    }
+/* ===== Enhanced Glassmorphism ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s;
+  padding: 1.25rem;
+}
+.dark .glass-card {
+  background: rgba(31, 41, 55, 0.85);
+  border-color: rgba(75, 85, 99, 0.5);
+}
+.stats-card {
+  composes: glass-card;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.gradient-btn {
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  transition: all 0.2s;
+}
+.gradient-btn:hover {
+  background: linear-gradient(135deg, #4338ca, #7e22ce);
+}
+/* Ensure text is readable on background */
+.text-gray-800, .dark .text-gray-800 {
+  color: #1f2937;
+}
+.dark .text-gray-800 {
+  color: #f3f4f6;
+}
